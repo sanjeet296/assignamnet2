@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL);
+error_reporting(-1);
+ini_set('error_reporting', E_ALL);
+
 session_start();
 if(isset($_SESSION['username']))
 {
@@ -13,13 +17,13 @@ $fname = "";
 $lname = "";
 $email = "";
 $occuption = "";
-$isactive = "";
+
 
 
  
 
 
-$db = mysqli_connect('localhost', 'phpmyadmin', 'java@123', 'admin');
+$db = mysqli_connect('localhost','root','java@123','sanjeet');
 
 
 if (isset($_POST['reg_user'])) {
@@ -34,7 +38,7 @@ if (isset($_POST['reg_user'])) {
 
   $occuption = mysqli_real_escape_string($db, $_POST['occuption']);
 
-  $isactive = mysqli_real_escape_string($db, $_POST['isactive']);
+ 
 
   $password_1 = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -49,10 +53,11 @@ if (isset($_POST['reg_user'])) {
 
   
   
-  if ($user['Username']== $username) 
+  if ($user['Username']== $username && $user['email']==$email) 
   {
-    echo "user exits";
-    header('location: register.php');
+    echo " username or email allready exits";
+    session_destroy();
+   
     exit();  
    
     }
@@ -60,16 +65,34 @@ if (isset($_POST['reg_user'])) {
     else{
 
   
-     $query = "INSERT INTO `admin_account`(`Username`, `firstname`, `lastname`, `email`, `occuption`, `Is_active`, `Password`) VALUES ('$username','$fname','$lname','$email','$occuption','$isactive','$password')";
-      
+     $query = "INSERT INTO `admin_account`(`Username`, `firstname`, `lastname`, `email`, `occuption`, `Password`) VALUES ('$username','$fname','$lname','$email','$occuption','$password')";
 
   			  
-    mysqli_query($db, $query);
+     $results= mysqli_query($db, $query);
+     $res=mysqli_fetch_assoc($results);
 
     $_SESSION['username']= $username;
+    $_SESSION['fname']= $fname;
+    $_SESSION['lname']= $lname;
+    $_SESSION['isadmin']= $res['is_admin'];
+
+    if($_SESSION['isadmin']==1)
+            {
+                header('location: admin.php');
+            } 
+            else
+            {
+
+          header('location: user.php');
+            }
+
+
+  
+   
+   
     
   	
-      header('location: admin.php');
+    
     }
 
 }

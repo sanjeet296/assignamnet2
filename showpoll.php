@@ -1,5 +1,9 @@
 
 <?php
+error_reporting(E_ALL);
+error_reporting(-1);
+ini_set('error_reporting', E_ALL);
+
 session_start();
 if(!isset($_SESSION['username']))
 {
@@ -22,7 +26,7 @@ if(!isset($_SESSION['username']))
     <div class="admin">
   <?php
 
-$db = mysqli_connect('localhost', 'phpmyadmin', 'java@123', 'admin');
+$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
 
 
 
