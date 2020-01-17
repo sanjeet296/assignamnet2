@@ -1,4 +1,6 @@
 <?php
+include('error.php');
+
 session_start();
 if(isset($_SESSION['username']))
 {
@@ -23,11 +25,11 @@ if(isset($_SESSION['username']))
   	
   	<div class="input-group">
   		<label>Username</label>
-  		<input type="text" name="username" >
+  		<input type="text" name="username" required>
   	</div>
   	<div class="input-group">
   		<label>Password</label>
-  		<input type="password" name="password">
+  		<input type="password" name="password" required>
   	</div>
   	<div class="input-group">
   		<button type="submit" class="btn" name="login_user">Login</button>

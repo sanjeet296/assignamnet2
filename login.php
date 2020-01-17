@@ -1,5 +1,8 @@
 <?php
+include('error.php');
 session_start();
+
+
 if(isset($_SESSION['username']))
 {
   header('location: admin.php');
@@ -8,7 +11,7 @@ if(isset($_SESSION['username']))
 }
 
 
-$db = mysqli_connect('localhost', 'phpmyadmin', 'java@123', 'admin');
+include('db.php');
 
 if (isset($_POST['login_user']))
  {
@@ -22,16 +25,48 @@ if (isset($_POST['login_user']))
         $query = "SELECT * FROM admin_account WHERE username='$username' AND password='$password'";
 
         $results = mysqli_query($db, $query);
+        $res=mysqli_fetch_assoc($results);
+        $_SESSION['fname']=$res['firstname'];
+        $_SESSION['lname']= $res['lastname'];
+        $_SESSION['isadmin']= $res['is_admin'];
+        $_SESSION['isactive']= $res['Is_active'];
+        $_SESSION['username']= $res['Username'];
+
+
+        
         
 
         if (mysqli_num_rows($results) == 1) 
         {
-        echo "welcome";
-        $_SESSION['username'] = $username;
-        header('location: admin.php');
+            if($_SESSION['isactive']==0)
+                {
+
+              echo 'your account is disabled by admin';
+              session_destroy();
+              exit();
+
+                 }
+        else
+          {
+
+          
+        
+              if($_SESSION['isadmin']==1)
+              {
+                  header('location: admin.php');
+              } 
+              else
+             {
+
+            header('location: user.php');
+              }
+            }
         }
-        else {
-            echo "user name incorrect";
+
+        else 
+        {
+            echo "username and passwords are incorrect";
+            session_destroy();
         }
     
   }
