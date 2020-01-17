@@ -1,4 +1,6 @@
 <?php
+include('error.php');
+include('db.php');
 session_start();
 if(!isset($_SESSION['username']))
 {
@@ -16,7 +18,7 @@ if($_SESSION['isadmin']==0)
 
 ?>
  <?php
-$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+
 if ( isset($_GET['status'])){
   if($_GET['status']==0){
     $update ="UPDATE `admin_account` SET `Is_active`='1' WHERE id=". $_GET['edit_id'];
@@ -34,7 +36,7 @@ if ( isset($_GET['status'])){
 ?> 
 
 <?php
-$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+
 if(isset($_GET['edit_id'])){
     $sql = "SELECT * FROM admin_account WHERE id =" .$_GET['edit_id'];
     $result = mysqli_query($db, $sql);
@@ -73,7 +75,7 @@ if(isset($_GET['edit_id'])){
    ?>
 
    <?Php
-  $db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+ 
    if(isset($_GET['delete_id']))
       {
        $sql = "SELECT * FROM admin_account WHERE id =" .$_GET['delete_id'];
@@ -108,7 +110,7 @@ if(isset($_GET['edit_id'])){
    <div class="admin">
   <?php
 
-$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+
 
 
 /* */

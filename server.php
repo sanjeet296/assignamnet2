@@ -1,7 +1,6 @@
 <?php
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
+include('error.php');
+include('db.php');
 
 session_start();
 if(isset($_SESSION['username']))
@@ -18,15 +17,7 @@ $lname = "";
 $email = "";
 $occuption = "";
 
-
-
- 
-
-
-$db = mysqli_connect('localhost','root','java@123','sanjeet');
-
-
-if (isset($_POST['reg_user'])) {
+  if (isset($_POST['reg_user'])) {
  
   $username = mysqli_real_escape_string($db, $_POST['username']);
 

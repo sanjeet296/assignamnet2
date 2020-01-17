@@ -52,7 +52,7 @@
 </html>
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+include('db.php');
 
 
 if (isset($_POST['poll_user']))
