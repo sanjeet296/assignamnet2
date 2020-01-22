@@ -2,16 +2,15 @@
 <html>
 <head>
   <title>Create polls</title>
-  
-</head>
+  </head>
   <body>
-    <h1> create poll </h1>
-        <hr>
+  <h1> create poll </h1>
+  <hr>
   <form  method = "post" action="poll.php">
-    <div>
-        <label>Question:</label>
-        <textarea rows="4" cols="50" name="question"></textarea>
-    </div>
+  <div>
+  <label>Question:</label>
+  <textarea rows="4" cols="50" name="question"></textarea>
+  </div>
   <h2>Options</h2>
   <div>
   <label>Option1:</label>
@@ -29,9 +28,6 @@
   <div>
   <label>Option4:</label>
   <textarea rows="4" cols="30" name="option4"></textarea>
-  </div>
-  <a href="poll.php"> Add Option </a>
-  </div>
   <div>
   <button type="submit" class="btn" name="save">save</button>
   </div>
@@ -41,9 +37,7 @@
   </html>
 <?php
 include('db.php');
-if(isset($_POST['save']))
-{
-
+if(isset($_POST['save'])){
   $question=$_POST['question'];
   $option1=$_POST['option1'];
   $option2=$_POST['option2'];
@@ -53,22 +47,7 @@ if(isset($_POST['save']))
   $json = json_encode($options); 
   $date=date("Y-m-d h:i:s");
   $sql="INSERT INTO `polls`(`Question`, `Options`,`created time`) VALUES ('$question','$json','$date')";
-  
-  
-
   mysqli_query($db,$sql);
-  header("Location:showpoll.php?msg");
-
-
-
+  header("Location:showpoll.php?msg=true");
 }
-
-
-
-
-
-
-
-
-
 ?>
