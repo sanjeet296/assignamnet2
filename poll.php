@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Create polls</title>
-  </head>
-  <body>
-  <h1> create poll </h1>
-  <hr>
-  <form  method = "post" action="poll.php">
-  <div>
-  <label>Question:</label>
-  <textarea rows="4" cols="50" name="question"></textarea>
-  </div>
-  <h2>Options</h2>
-  <div>
-  <label>Option1:</label>
-  <textarea rows="4" cols="30" name="option1"></textarea>
-  </div>
-  <div>
-  <label>Option2:</label>
-  <textarea rows="4" cols="30" name="option2"></textarea>
-  </div>
-  <div>
-  <div>
-  <label>Option3:</label>
-  <textarea rows="4" cols="30" name="option3"></textarea>
-  </div>
-  <div>
-  <label>Option4:</label>
-  <textarea rows="4" cols="30" name="option4"></textarea>
-  <div>
-  <button type="submit" class="btn" name="save">save</button>
-  </div>
-  <a href ="admin.php">back </a>
-  </form>
-  </body>
-  </html>
+    <title>Create polls</title>
+</head>
+
+<body>
+    <h1> create poll </h1>
+    <hr>
+    <form method="post" action="poll.php">
+        <div>
+            <label>Question:</label>
+            <textarea rows="4" cols="50" name="question"></textarea>
+        </div>
+        <h2>Options</h2>
+        <div>
+            <label>Option1:</label>
+            <textarea rows="4" cols="30" name="option1"></textarea>
+        </div>
+        <div>
+            <label>Option2:</label>
+            <textarea rows="4" cols="30" name="option2"></textarea>
+        </div>
+        <div>
+            <div>
+                <label>Option3:</label>
+                <textarea rows="4" cols="30" name="option3"></textarea>
+            </div>
+            <div>
+                <label>Option4:</label>
+                <textarea rows="4" cols="30" name="option4"></textarea>
+                <div>
+                    <button type="submit" class="btn" name="save">save</button>
+                </div>
+                <a href="admin.php">back </a>
+    </form>
+</body>
+
+</html>
 <?php
 include('db.php');
 if(isset($_POST['save'])){
