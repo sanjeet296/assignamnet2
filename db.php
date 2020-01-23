@@ -1,5 +1,5 @@
 <?php 
 
-$db = mysqli_connect('localhost', 'root', 'java@123', 'sanjeet');
+$db = mysqli_connect('localhost', 'phpmyadmin', 'java@123', 'admin');
 
 ?>
