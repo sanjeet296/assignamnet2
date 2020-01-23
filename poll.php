@@ -23,17 +23,17 @@
             <textarea rows="4" cols="30" name="option2"></textarea>
         </div>
         <div>
-            <div>
-                <label>Option3:</label>
-                <textarea rows="4" cols="30" name="option3"></textarea>
-            </div>
-            <div>
+            <label>Option3:</label>
+            <textarea rows="4" cols="30" name="option3"></textarea>
+        </div>
+        <div>
                 <label>Option4:</label>
                 <textarea rows="4" cols="30" name="option4"></textarea>
-                <div>
-                    <button type="submit" class="btn" name="save">save</button>
-                </div>
-                <a href="admin.php">back </a>
+        </div>
+        <div>
+                <button type="submit" class="btn" name="save">save</button>
+        </div>
+        <a href="admin.php">back </a>
     </form>
 </body>
 

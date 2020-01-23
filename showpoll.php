@@ -43,7 +43,6 @@ if ( isset($_GET['status'])){
       }else{
         header('location: showpoll.php?page='.$currentPage);
       }
-
   }
 ?>
 <?php
@@ -53,7 +52,6 @@ if(isset($_GET['edit_id'])){
     $row = mysqli_fetch_array($result);
    }
    if(isset($_POST['btn-update'])){
-    
       $question = $_POST['question'];
       $json = json_encode( $_POST['option']); 
       $date_edit=date("Y-m-d h:i:s");
@@ -131,11 +129,11 @@ if(isset($_GET['edit_id'])){
   <td>
       <?php echo $data['Question']; ?>          
   </td>
-  <?php foreach ($value as $val){ ?>
-      <td>
-        <?php echo $val; ?>
-      </td>
-  <?php } ?>
+    <?php foreach ($value as $val){ ?>
+  <td>
+    <?php echo $val; ?>
+  </td>
+    <?php } ?>
   <td><a href="showpoll.php?edit_id=<?php echo $data['id'];?>&page=<?php echo $currentPage ?>">edit</a></td>
   <td><a href="showpoll.php?delete_id=<?php echo $data['id'];?>&page=<?php echo $currentPage ?>">delete</a></td>
   <td>
@@ -169,22 +167,19 @@ if(isset($_GET['edit_id'])){
 <form method="post">
   <tr>
     <td>
-        <?php echo $_GET['edit_id'] ?>
+      <?php echo $_GET['edit_id'] ?>
     </td>
     <td>
         <input type="text" name="question" value="<?php echo $data['Question']; ?>">
         <br/>
         <br/>
     </td>
-    
-       
-        <?php foreach($value as $x => $val) {?>
+      <?php foreach($value as $x => $val) {?>
     <td>
         <input type="text" name=option[]  value="<?php echo $val ?>">
             <br/><br/>
-          
     </td> 
-          <?php }?>
+      <?php }?>
     <td>
         <button type="submit" name="btn-update"><strong>Update</strong></button>
     </td>
@@ -204,9 +199,8 @@ if(isset($_GET['edit_id'])){
 </form>
   <?php
     }
-    }
-    ?>
-
+ }
+  ?>
 </table>
 <nav aria-label="Page navigation">
   <?php
